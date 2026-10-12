@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SUDS — The SUD-Specific Layer for County Programs | AugustInnovations LLC</title>
 <meta name="description" content="SUDS is the substance-use-disorder layer that sits beside your EHR: 42 CFR Part 2 consent, CalOMS reporting, settlement accountability, outreach and referrals — built for county SUD programs and their providers.">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <style>
   :root{
     --navy:#16324A; --navy-deep:#0F2436; --teal:#177A6B; --teal-dark:#11604F;
@@ -20,10 +21,12 @@
   /* header */
   header{background:var(--navy);color:#fff}
   .topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-  .brand{display:flex;align-items:baseline;gap:12px}
-  .brand .mark{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:800;font-size:30px;letter-spacing:2px;color:#fff}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img.logo{width:42px;height:42px;display:block}
+  .brand .mark{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:800;font-size:30px;letter-spacing:2px;color:#fff;line-height:1}
+  .brand .by{font-size:13px;color:#B9C9D6;margin-top:3px}
+  footer img.logo{width:20px;height:20px;vertical-align:-4px;margin-right:7px}
   .brand .mark span{color:var(--gold)}
-  .brand .by{font-size:13px;color:#B9C9D6}
   nav a{color:#E7EEF3;text-decoration:none;margin-left:22px;font-size:15px}
   nav a:hover{color:var(--gold)}
   nav a.cta{background:var(--gold);color:var(--navy-deep);padding:8px 16px;border-radius:8px;font-weight:700}
@@ -80,8 +83,11 @@
 <header>
   <div class="wrap topbar">
     <div class="brand">
-      <div class="mark">SUDS<span>.</span></div>
-      <div class="by">by AugustInnovations LLC</div>
+      <img class="logo" src="logo.svg" alt="SUDS logo">
+      <div>
+        <div class="mark">SUDS<span>.</span></div>
+        <div class="by">by AugustInnovations LLC</div>
+      </div>
     </div>
     <nav class="sans">
       <a class="hideS" href="#what">What it does</a>
@@ -171,6 +177,7 @@
         <p class="per">one program, credited in full toward year one</p>
         <ul>
           <li>Starts on fictional data; real data only under signed BAA + QSOA</li>
+          <li>Onboarding and CalOMS code-set validation against the DHCS dictionary included; file layout confirmed with your county</li>
           <li>Named users from your program</li>
           <li>Day-90 evaluation report against agreed measures</li>
           <li>Your data exported if you don't continue</li>
@@ -181,9 +188,10 @@
         <p class="amount">$4,800</p>
         <p class="per">per year, single program</p>
         <ul>
-          <li>Full SUDS feature set</li>
-          <li>Hosting, backups, and updates included</li>
-          <li>BAA + QSOA included</li>
+          <li>Full SUDS feature set, single site</li>
+          <li>Up to 30 staff accounts</li>
+          <li>BAA + QSOA, all updates, and backups included</li>
+          <li>Email support — response within two business days</li>
         </ul>
       </div>
       <div class="price">
@@ -192,6 +200,8 @@
         <p class="per">per year, multiple programs or sites</p>
         <ul>
           <li>Everything in Program</li>
+          <li>Up to 5 sites, up to 150 staff accounts</li>
+          <li>Onboarding assistance included</li>
           <li>Cross-program reporting</li>
           <li>Provider-level views for county administrators</li>
         </ul>
@@ -201,11 +211,13 @@
         <p class="amount">Custom</p>
         <p class="per">county system of care</p>
         <ul>
-          <li>County-wide deployment</li>
+          <li>County-wide deployment — unlimited sites and staff</li>
+          <li>Onboarding, training, and a named support contact included</li>
           <li>Terms matched to county procurement</li>
         </ul>
       </div>
     </div>
+    <p class="sub" style="margin-top:22px">Deployed on AugustInnovations' hosted infrastructure or on your own office server — prices exclude customer infrastructure for self-hosted deployments. The public demo build stays free.</p>
   </section>
 
   <section id="pilot">
@@ -233,7 +245,7 @@
   <div class="wrap">
     <div class="cols">
       <div>
-        <strong style="color:#fff">SUDS</strong> — substance-use-disorder program software<br>
+        <img class="logo" src="logo.svg" alt=""><strong style="color:#fff">SUDS</strong> — substance-use-disorder program software<br>
         A product of AugustInnovations LLC, California
       </div>
       <div>
