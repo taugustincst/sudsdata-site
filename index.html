@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SUDS — The SUD-Specific Layer for County Programs | AugustInnovations LLC</title>
+<meta name="description" content="SUDS is the substance-use-disorder layer that sits beside your EHR: 42 CFR Part 2 consent, CalOMS reporting, settlement accountability, outreach and referrals — built for county SUD programs and their providers.">
+<style>
+  :root{
+    --navy:#16324A; --navy-deep:#0F2436; --teal:#177A6B; --teal-dark:#11604F;
+    --gold:#C9902E; --ink:#1C2733; --muted:#5A6B7A; --paper:#F7F5F0; --card:#FFFFFF;
+    --line:#E2DDD2; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--paper);color:var(--ink);line-height:1.6}
+  h1,h2,h3,.sans{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
+  a{color:var(--teal-dark)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  /* header */
+  header{background:var(--navy);color:#fff}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand .mark{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:800;font-size:30px;letter-spacing:2px;color:#fff}
+  .brand .mark span{color:var(--gold)}
+  .brand .by{font-size:13px;color:#B9C9D6}
+  nav a{color:#E7EEF3;text-decoration:none;margin-left:22px;font-size:15px}
+  nav a:hover{color:var(--gold)}
+  nav a.cta{background:var(--gold);color:var(--navy-deep);padding:8px 16px;border-radius:8px;font-weight:700}
+  nav a.cta:hover{color:var(--navy-deep);background:#DCA53E}
+  /* hero */
+  .hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;padding:56px 0 64px}
+  .hero h1{font-size:42px;line-height:1.15;margin:0 0 18px;font-weight:800}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero p.lede{font-size:20px;color:#D7E3EC;max-width:760px;margin:0 0 28px}
+  .hero .actions a{display:inline-block;margin-right:14px;padding:13px 24px;border-radius:9px;text-decoration:none;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:700;font-size:16px}
+  .btn-gold{background:var(--gold);color:var(--navy-deep)}
+  .btn-ghost{border:1.5px solid #7E97A9;color:#E7EEF3}
+  .hero .note{margin-top:22px;font-size:14px;color:#9FB4C4}
+  /* sections */
+  section{padding:58px 0 8px}
+  h2{font-size:29px;color:var(--navy);margin:0 0 8px;font-weight:800}
+  .kicker{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;text-transform:uppercase;letter-spacing:2.5px;font-size:12.5px;color:var(--teal);font-weight:700;margin:0 0 10px}
+  .sub{color:var(--muted);max-width:780px;margin:0 0 30px;font-size:17.5px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px 18px}
+  .card h3{margin:0 0 8px;font-size:18.5px;color:var(--navy)}
+  .card p{margin:0 0 10px;font-size:16px;color:#33424F}
+  .card .tag{display:inline-block;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--teal-dark);background:#E4F0EC;border-radius:20px;padding:3px 11px;margin-bottom:12px}
+  /* band */
+  .band{background:var(--navy);color:#E7EEF3;border-radius:var(--radius);padding:34px 36px;margin:26px 0 6px}
+  .band h2{color:#fff}
+  .band .sub{color:#B9C9D6}
+  .band ul{margin:0;padding-left:20px}
+  .band li{margin-bottom:9px}
+  .band strong{color:#fff}
+  /* pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+  .price{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px}
+  .price.featured{border:2px solid var(--gold)}
+  .price h3{margin:0 0 4px;font-size:18px;color:var(--navy)}
+  .price .amount{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:31px;font-weight:800;color:var(--navy);margin:8px 0 2px}
+  .price .per{color:var(--muted);font-size:14.5px;margin:0 0 14px}
+  .price ul{margin:0;padding-left:18px;font-size:15.5px;color:#33424F}
+  .price li{margin-bottom:7px}
+  /* footer */
+  footer{background:var(--navy-deep);color:#B9C9D6;margin-top:64px;padding:38px 0 30px;font-size:15px}
+  footer .cols{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between}
+  footer a{color:#E7EEF3}
+  footer .fine{margin-top:26px;padding-top:18px;border-top:1px solid #2A4356;font-size:13.5px;color:#8499A9}
+  @media (max-width:640px){
+    .hero h1{font-size:32px}
+    nav a{margin-left:14px}
+    nav a.hideS{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap topbar">
+    <div class="brand">
+      <div class="mark">SUDS<span>.</span></div>
+      <div class="by">by AugustInnovations LLC</div>
+    </div>
+    <nav class="sans">
+      <a class="hideS" href="#what">What it does</a>
+      <a class="hideS" href="#security">Security</a>
+      <a class="hideS" href="#pricing">Pricing</a>
+      <a class="cta" href="#pilot">Start a pilot</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>The substance-use-disorder layer your EHR <em>wasn't built to be</em>.</h1>
+    <p class="lede">SUDS sits beside your existing EHR — including SmartCare — and handles the work that is specific to SUD programs: 42&nbsp;CFR Part&nbsp;2 consent, CalOMS reporting, settlement-fund accountability, outreach, and referrals. Your EHR stays your EHR. SUDS is the layer counties and providers actually run their SUD programs in.</p>
+    <div class="actions">
+      <a class="btn-gold" href="#pilot">Start a 90-day pilot</a>
+      <a class="btn-ghost" href="https://taugustincst.github.io/suds/">Try the public demo</a>
+    </div>
+    <p class="note">The public demo runs on fictional data only. No real client information ever touches it.</p>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="what">
+    <p class="kicker">What it does</p>
+    <h2>Built for SUD programs, not adapted to them</h2>
+    <p class="sub">General EHRs treat substance-use treatment as a note type. SUDS treats it as the whole job — because for a county SUD system, it is.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="tag">42 CFR PART 2</span>
+        <h3>Consent &amp; segmentation, enforced</h3>
+        <p>Part&nbsp;2 records are segmented by consent, not by policy memo. Disclosures follow the consent on file, redisclosure limits travel with the record, and every access is written to a tamper-evident audit chain anchored outside the database.</p>
+      </div>
+      <div class="card">
+        <span class="tag">CALOMS</span>
+        <h3>CalOMS admission &amp; discharge</h3>
+        <p>CalOMS treatment records captured at intake and discharge, with code sets verified field-by-field against the DHCS Data Dictionary v3.0. Submission-layout confirmation with DHCS is a standard step of pilot onboarding, done with your county — not after go-live.</p>
+      </div>
+      <div class="card">
+        <span class="tag">ACCOUNTABILITY</span>
+        <h3>Settlement &amp; grant accountability</h3>
+        <p>Track services against the funding that paid for them. SUDS ties clients, services, and dollars together so settlement and grant reporting is an export, not a reconstruction.</p>
+      </div>
+      <div class="card">
+        <span class="tag">OUTREACH</span>
+        <h3>Outreach &amp; referral tracking</h3>
+        <p>Street outreach encounters, referrals out, referrals in, and what actually happened to them — the follow-through counties are asked about and spreadsheets can't answer.</p>
+      </div>
+      <div class="card">
+        <span class="tag">OPERATIONS</span>
+        <h3>Program operations</h3>
+        <p>Caseloads, tasks, notes, and supervision workflows for navigators, clinicians, and supervisors — role-based views matched to how SUD programs are actually staffed.</p>
+      </div>
+      <div class="card">
+        <span class="tag">REPORTING</span>
+        <h3>Reports a director can use</h3>
+        <p>Program, provider, and county-level reporting generated from live program data — census, services, outcomes, and the audit trail behind every number.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="security">
+    <p class="kicker">Security &amp; compliance</p>
+    <h2>Stated plainly, and verifiable</h2>
+    <p class="sub">Every claim below describes the production system as it runs today. Ask us to demonstrate any of them during a pilot — the evidence is generated by the system itself.</p>
+    <div class="band">
+      <ul>
+        <li><strong>Encryption at rest.</strong> The production data volume is encrypted with LUKS (AES-256, XTS). Backups are encrypted before they leave the host.</li>
+        <li><strong>Backups that are proven, not assumed.</strong> Every scheduled backup is copied off-host and verified against the original by size and SHA-256 after every run. A failed copy is reported, never silent.</li>
+        <li><strong>Recovery drills.</strong> Backups are regularly restored from the off-host copy and checked end-to-end — integrity, audit chain, and sign-in — producing a signed drill report.</li>
+        <li><strong>Access control.</strong> Role-based permissions, multi-factor authentication, automatic lockout, and a tamper-evident audit log whose anchors are stored off the database.</li>
+        <li><strong>Agreements.</strong> AugustInnovations LLC signs a HIPAA Business Associate Agreement and a standalone Qualified Service Organization Agreement under 42&nbsp;CFR&nbsp;2.12(c)(4) — the instrument that actually authorizes receiving Part&nbsp;2 records. Hosting is on AWS, under an accepted AWS BAA.</li>
+        <li><strong>Honest scope.</strong> SUDS is a SUD-specific layer, not a general EHR, and it does not replace one. It runs the current release, 1.25.6.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <p class="kicker">Pricing</p>
+    <h2>Published pricing, no quote process</h2>
+    <p class="sub">The same numbers we give every county. Pilots are paid, short, and credited — because a free pilot proves nothing about whether a program will actually use the system.</p>
+    <div class="price-grid">
+      <div class="price featured">
+        <h3>90-Day Pilot</h3>
+        <p class="amount">$2,500</p>
+        <p class="per">one program, credited in full toward year one</p>
+        <ul>
+          <li>Starts on fictional data; real data only under signed BAA + QSOA</li>
+          <li>Named users from your program</li>
+          <li>Day-90 evaluation report against agreed measures</li>
+          <li>Your data exported if you don't continue</li>
+        </ul>
+      </div>
+      <div class="price">
+        <h3>Program</h3>
+        <p class="amount">$4,800</p>
+        <p class="per">per year, single program</p>
+        <ul>
+          <li>Full SUDS feature set</li>
+          <li>Hosting, backups, and updates included</li>
+          <li>BAA + QSOA included</li>
+        </ul>
+      </div>
+      <div class="price">
+        <h3>Multi-Site</h3>
+        <p class="amount">$12,000</p>
+        <p class="per">per year, multiple programs or sites</p>
+        <ul>
+          <li>Everything in Program</li>
+          <li>Cross-program reporting</li>
+          <li>Provider-level views for county administrators</li>
+        </ul>
+      </div>
+      <div class="price">
+        <h3>County-Wide</h3>
+        <p class="amount">Custom</p>
+        <p class="per">county system of care</p>
+        <ul>
+          <li>County-wide deployment</li>
+          <li>Terms matched to county procurement</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="pilot">
+    <p class="kicker">Start a pilot</p>
+    <h2>Talk to the person who built it</h2>
+    <p class="sub">SUDS is built and operated by AugustInnovations LLC, a California company. A pilot starts with a working session — your program's workflow in the actual system, on fictional data — not a slide deck.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Procurement &amp; pilots</h3>
+        <p>Taylor Augustin<br>AugustInnovations LLC<br>
+        <a href="mailto:taylor@suds.systems">taylor@suds.systems</a></p>
+        <p>Agreement templates (pilot licence, BAA, QSOA) and security documentation are available on request for procurement review.</p>
+      </div>
+      <div class="card">
+        <h3>See it first</h3>
+        <p><a href="https://taugustincst.github.io/suds/">Public demo</a> — the full system on fictional data, in your browser.</p>
+        <p><a href="https://suds.systems">Customer sign-in</a> — for authorized users of the production system.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <strong style="color:#fff">SUDS</strong> — substance-use-disorder program software<br>
+        A product of AugustInnovations LLC, California
+      </div>
+      <div>
+        <a href="mailto:taylor@suds.systems">taylor@suds.systems</a><br>
+        <a href="https://suds.systems">suds.systems</a> · <a href="https://sudsdata.com">sudsdata.com</a>
+      </div>
+    </div>
+    <p class="fine">© 2026 AugustInnovations LLC. This site describes SUDS release 1.25.6. The public demo contains fictional data only; never enter real client information into the demo.</p>
+  </div>
+</footer>
+
+</body>
+</html>
