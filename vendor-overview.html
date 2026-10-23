@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SUDS — Vendor Overview for Buyers | AugustInnovations LLC</title>
+<meta name="description" content="SUDS vendor overview: what it is, deployment and isolation model, security posture, engagement models, and status.">
+<link rel="canonical" href="https://sudsdata.com/vendor-overview.html">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<style>
+  :root{
+    --navy:#16324A; --navy-deep:#0F2436; --teal:#177A6B; --teal-dark:#11604F;
+    --gold:#C9902E; --ink:#1C2733; --muted:#5A6B7A; --paper:#F7F5F0; --card:#FFFFFF;
+    --line:#E2DDD2; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--paper);color:var(--ink);line-height:1.6}
+  h1,h2,h3,.sans{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
+  a{color:var(--teal-dark)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  /* header */
+  header{background:var(--navy);color:#fff}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img.logo{width:42px;height:42px;display:block}
+  .brand .mark{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:800;font-size:30px;letter-spacing:2px;color:#fff;line-height:1}
+  .brand .by{font-size:13px;color:#B9C9D6;margin-top:3px}
+  footer img.logo{width:20px;height:20px;vertical-align:-4px;margin-right:7px}
+  .brand .mark span{color:var(--gold)}
+  nav a{color:#E7EEF3;text-decoration:none;margin-left:22px;font-size:15px}
+  nav a:hover{color:var(--gold)}
+  nav a.cta{background:var(--gold);color:var(--navy-deep);padding:8px 16px;border-radius:8px;font-weight:700}
+  nav a.cta:hover{color:var(--navy-deep);background:#DCA53E}
+  /* hero */
+  .hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);color:#fff;padding:56px 0 64px}
+  .hero h1{font-size:42px;line-height:1.15;margin:0 0 18px;font-weight:800}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero p.lede{font-size:20px;color:#D7E3EC;max-width:760px;margin:0 0 28px}
+  .hero .actions a{display:inline-block;margin-right:14px;padding:13px 24px;border-radius:9px;text-decoration:none;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:700;font-size:16px}
+  .btn-gold{background:var(--gold);color:var(--navy-deep)}
+  .btn-ghost{border:1.5px solid #7E97A9;color:#E7EEF3}
+  .hero .note{margin-top:22px;font-size:14px;color:#9FB4C4}
+  /* sections */
+  section{padding:58px 0 8px}
+  h2{font-size:29px;color:var(--navy);margin:0 0 8px;font-weight:800}
+  .kicker{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;text-transform:uppercase;letter-spacing:2.5px;font-size:12.5px;color:var(--teal);font-weight:700;margin:0 0 10px}
+  .sub{color:var(--muted);max-width:780px;margin:0 0 30px;font-size:17.5px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 24px 18px}
+  .card h3{margin:0 0 8px;font-size:18.5px;color:var(--navy)}
+  .card p{margin:0 0 10px;font-size:16px;color:#33424F}
+  .card .tag{display:inline-block;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--teal-dark);background:#E4F0EC;border-radius:20px;padding:3px 11px;margin-bottom:12px}
+  /* band */
+  .band{background:var(--navy);color:#E7EEF3;border-radius:var(--radius);padding:34px 36px;margin:26px 0 6px}
+  .band h2{color:#fff}
+  .band .sub{color:#B9C9D6}
+  .band ul{margin:0;padding-left:20px}
+  .band li{margin-bottom:9px}
+  .band strong{color:#fff}
+  /* pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+  .price{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px}
+  .price.featured{border:2px solid var(--gold)}
+  .price h3{margin:0 0 4px;font-size:18px;color:var(--navy)}
+  .price .amount{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-size:31px;font-weight:800;color:var(--navy);margin:8px 0 2px}
+  .price .per{color:var(--muted);font-size:14.5px;margin:0 0 14px}
+  .price ul{margin:0;padding-left:18px;font-size:15.5px;color:#33424F}
+  .price li{margin-bottom:7px}
+  /* footer */
+  footer{background:var(--navy-deep);color:#B9C9D6;margin-top:64px;padding:38px 0 30px;font-size:15px}
+  footer .cols{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between}
+  footer a{color:#E7EEF3}
+  footer .fine{margin-top:26px;padding-top:18px;border-top:1px solid #2A4356;font-size:13.5px;color:#8499A9}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--navy-deep);padding:10px 16px;z-index:10;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:700}
+  .skip:focus{left:12px;top:12px}
+  a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  .facts{font-size:15px;color:var(--muted);margin-top:18px}
+  @media (max-width:760px){
+    .topbar{flex-wrap:wrap;gap:10px}
+    nav{display:flex;flex-wrap:wrap;gap:6px 14px}
+    nav a{margin-left:0;font-size:14.5px}
+    .hero h1{font-size:32px}
+    .hero .actions a{margin-bottom:10px}
+  }
+
+  main.wrap{padding-top:34px}
+  main h1{font-size:32px;color:var(--navy)}
+  main h2{font-size:23px}
+  table{border-collapse:collapse;width:100%;margin:14px 0}
+  th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+  th{background:#EFECE3}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <div class="brand">
+      <img class="logo" src="logo.svg" alt="SUDS logo">
+      <div>
+        <div class="mark">SUDS<span>.</span></div>
+        <div class="by">by AugustInnovations LLC</div>
+      </div>
+    </div>
+    <nav class="sans">
+      <a href="index.html">Home</a>
+      <a href="index.html#engagements">Engagements</a>
+      <a href="index.html#pilot">Start a pilot</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<h1>SUDS — Vendor Overview for Buyers</h1>
+<p><strong>AugustInnovations LLC</strong> · info@suds.systems · sudsdata.com</p>
+<h2>What SUDS is</h2>
+<p>SUDS is the hosted data platform for California harm-reduction and substance-use disorder (SUD) programs. It runs the daily work of a program in one system:</p>
+<ul>
+<li>Street outreach encounters — named or anonymous, with offline capture</li>
+<li>Naloxone and supply distribution tracked by lot</li>
+<li>Referrals and follow-up</li>
+<li>Consent management built for 42 CFR Part 2</li>
+<li>Reporting for CalOMS Tx and opioid-settlement requirements</li>
+</ul>
+<p>SUDS is built and operated by AugustInnovations LLC, a California LLC (Entity No. 202253018246; D-U-N-S 12-343-3746) whose operator is a practicing Clinical Application Specialist II.</p>
+<h2>Deployment model</h2>
+<p>SUDS is multi-tenant software operated by AugustInnovations on one managed fleet — with strict per-tenant isolation:</p>
+<ul>
+<li>Each tenant organization gets its <strong>own instance/process, its own database, its own encryption keys, and its own subdomain</strong></li>
+<li>Tenants never share a database with another organization</li>
+<li>Hosting is included in every engagement; there is nothing for the buyer to install or maintain</li>
+</ul>
+<h2>Security posture</h2>
+<ul>
+<li>Encryption at rest for tenant data</li>
+<li>Tamper-evident audit logging of access and changes</li>
+<li>42 CFR Part 2 consent workflows enforced in the application, not left to policy</li>
+<li>Role-based access with multi-factor authentication</li>
+<li>Security testing is built into the platform lifecycle: internal security assessment on every release, and independent third-party penetration testing of the platform</li>
+</ul>
+<h2>Engagement models</h2>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pilot</strong></td>
+<td>A structured 90-day pilot of the full platform, credited in full toward year one on conversion</td>
+</tr>
+<tr>
+<td><strong>Program</strong></td>
+<td>Annual engagement for a single program</td>
+</tr>
+<tr>
+<td><strong>Multi-Site</strong></td>
+<td>Annual engagement covering multiple sites under one organization</td>
+</tr>
+<tr>
+<td><strong>County-Wide</strong></td>
+<td>Annual engagement for county-wide deployment</td>
+</tr>
+</tbody>
+</table>
+<p>Pricing is provided in proposals, scoped to the engagement.</p>
+<h2>Status</h2>
+<ul>
+<li><strong>Version 1.26.0 is live in production</strong> (released October 2026), operated by AugustInnovations LLC.</li>
+<li>A single-device browser version of SUDS is available for evaluation and small-team program use.</li>
+<li>Customer agreements, including BAA/QSOA documentation where applicable, are available on request.</li>
+</ul>
+<h2>Contact</h2>
+<p>AugustInnovations LLC · Plumas Lake, California
+<strong>info@suds.systems</strong> · sudsdata.com · augustinnovations.io</p>
+</main>
+<footer>
+  <div class="wrap">
+    <p class="fine">© 2026 AugustInnovations LLC · <a href="index.html">sudsdata.com</a> · <a href="https://augustinnovations.io/documents/">AugustInnovations documents</a></p>
+  </div>
+</footer>
+</body>
+</html>
