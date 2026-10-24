@@ -114,7 +114,7 @@
       <a href="#what">What it does</a>
       <a href="#security">Security</a>
       <a href="#engagements">Engagements</a>
-      <a class="cta" href="#pilot">Start a pilot</a>
+      <a class="cta" href="#pilot" data-lead-open>Start a pilot</a>
     </nav>
   </div>
 </header>
@@ -124,7 +124,7 @@
     <h1>Harm-reduction and SUD program work, <em>recorded once and reported everywhere it's owed</em>.</h1>
     <p class="lede">SUDS runs the day-to-day of California harm-reduction programs, SUD providers and the counties that fund them: street outreach, named or anonymous and offline where you allow it; naloxone and supplies by site and lot; referrals; 42&nbsp;CFR Part&nbsp;2 consent; CalOMS Tx; and opioid-settlement reporting. It works with or without an EHR, and beside one (SmartCare included) without replacing it.</p>
     <div class="actions">
-      <a class="btn-gold" href="#pilot">Start a 90-day pilot</a>
+      <a class="btn-gold" href="#pilot" data-lead-open>Start a 90-day pilot</a>
       <a class="btn-ghost" href="#on-this-device">Use it free on one device</a>
     </div>
     <p class="note">SUDS on this device is free for real use: your records stay in that browser, on that device (<a href="https://github.com/taugustincst/suds/blob/main/LICENSE" style="color:#D7E3EC">licence, section 2A</a>).</p>
@@ -299,6 +299,18 @@
         <p><a href="https://github.com/taugustincst/suds/blob/main/docs/market/PILOT-KIT.md">The 90-day pilot plan</a>: roles, week-by-week steps and the day-90 decision.</p>
       </div>
     </div>
+    <p class="sub" style="margin-top:26px">Send the details here — we reply by email:</p>
+    <form class="lead-form" data-lead-form data-inbox="taylor@suds.systems" data-site="sudsdata.com" novalidate>
+      <div class="lf-grid">
+        <label class="lf-field"><span>Your name *</span><input type="text" name="name" autocomplete="name" required></label>
+        <label class="lf-field"><span>Email *</span><input type="email" name="email" autocomplete="email" required></label>
+        <label class="lf-field"><span>Organization (optional)</span><input type="text" name="org" autocomplete="organization"></label>
+        <label class="lf-field"><span>I'm interested in</span><select name="interest"><option selected>SUDS pilot</option><option>General question</option></select></label>
+      </div>
+      <label class="lf-field"><span>Message *</span><textarea name="message" rows="6" required></textarea></label>
+      <button type="submit" class="lf-send">Send message</button>
+      <p class="lf-note">Sending opens your email app with your message addressed to taylor@suds.systems.</p>
+    </form>
   </section>
 
 </main>
@@ -320,5 +332,6 @@
   </div>
 </footer>
 
+<script src="lead.js" data-inbox="taylor@suds.systems" data-brand="SUDS" data-site="sudsdata.com" data-interests="SUDS pilot|General question" data-interest="SUDS pilot" data-head="#16324A" data-accent="#C9902E" data-accent-ink="#0F2436"></script>
 </body>
 </html>
